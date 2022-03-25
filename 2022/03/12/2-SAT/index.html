@@ -24,7 +24,7 @@
 <meta property="og:description" content="2-SAT 问题 和网络流一样，很多问题都可以建模为 2-SAT 问题，只要会求解 2-SAT，就可以解决许多问题。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-12T09:37:37.000Z">
-<meta property="article:modified_time" content="2022-03-19T05:07:48.162Z">
+<meta property="article:modified_time" content="2022-03-25T14:12:17.553Z">
 <meta property="article:author" content="Tang Mingze">
 <meta property="article:tag" content="2-SAT">
 <meta property="article:tag" content="图论">
@@ -204,7 +204,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.5k 字
+      4.6k 字
     </span>
   
 
@@ -248,6 +248,9 @@
               <h1 id="2-sat-问题"><a class="markdownIt-Anchor" href="#2-sat-问题"></a> 2-SAT 问题</h1>
 <p>和网络流一样，很多问题都可以建模为 <code>2-SAT</code> 问题，只要会求解 <code>2-SAT</code>，就可以解决许多问题。</p>
 <span id="more"></span>
+<p><a target="_blank" rel="noopener" href="https://juruo999.blog.luogu.org/post-2-SAT">洛谷博客</a><br />
+<a target="_blank" rel="noopener" href="https://codewasp942.github.io/2022/03/12/2-SAT/">github</a><br />
+<a target="_blank" rel="noopener" href="https://codewasp942-github-io.vercel.app/2022/03/12/2-SAT/">vercel</a></p>
 <h2 id="k-sat"><a class="markdownIt-Anchor" href="#k-sat"></a> k-SAT</h2>
 <p>首先引入 <code>k-SAT</code> 问题。</p>
 <p><code>k-SAT</code> 问题说的就是有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 个布尔值 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 组约束条件，其中每组约束都是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span> 中 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span> 个值进行逻辑运算后等于一个给定值 （<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 或 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>） 的形式，求一组满足约束的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>（或者输出无解）。</p>
